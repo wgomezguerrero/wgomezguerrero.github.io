@@ -1,2007 +1,588 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" type="x-icon" href="./images/movie logo.png">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        Pelisvip
-    </title>
-    <!-- GOOGLE FONTS -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
-    <!-- OWL CAROUSEL -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
-    <!-- BOX ICONS -->
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <!-- APP CSS -->
-    <link rel="stylesheet" href="grid.css">
-    <link rel="stylesheet" href="app.css">
-
+    <title>PelisVIP - La mejor experiencia en streaming</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f0f16;
+            color: #ffffff;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+        
+        .content-card {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .content-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #2563eb 0%, #1e40af 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
+        }
+        
+        .device-card {
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .device-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(37, 99, 235, 0.2);
+            border-radius: 16px;
+        }
+    </style>
 </head>
-
-<style>
-
-:root {
-    --main-color: #1f83ed;
-    --body-bg: #181616;
-    --box-bg: #221f1f;
-    --text-color: #ffffff;
-
-    --nav-height: 60px;
-    --space-top: 30px;
-}
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-html {
-    font-size: 16px;
-}
-
-body {
-    font-family: "Cairo", sans-serif;
-    background-color: var(--body-bg);
-    color: var(--text-color);
-    padding-top: var(--nav-height);
-}
-
-a {
-    text-decoration: none;
-    color: unset;
-}
-
-img {
-    max-width: 100%;
-}
-
-.main-color {
-    color: var(--main-color);
-}
-
-.container {
-    max-width: 1920px;
-    padding: 0 40px;
-    margin: auto;
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.nav-wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 99;
-    background-color: #000000;
-}
-
-.nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: var(--text-color);
-    height: var(--nav-height);
-}
-
-.nav a {
-    color: var(--text-color);
-}
-
-.logo {
-    font-size: 2rem;
-    font-weight: 900;
-}
-
-.nav-menu {
-    list-style-type: none;
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-}
-
-.nav-menu li ~ li {
-    margin-left: 30px;
-}
-
-.nav-menu a {
-    text-transform: uppercase;
-    font-weight: 700;
-}
-
-.nav-menu a:hover {
-    color: var(--main-color);
-}
-
-.nav-menu a.btn:hover,
-a.logo:hover,
-a.movie-item:hover {
-    color: unset;
-}
-
-.btn {
-    color: #ffffff;
-    padding: 0.25rem 1.5rem;
-    text-transform: uppercase;
-    font-size: 1.25rem;
-    font-weight: 700;
-    display: inline-flex;
-    position: relative;
-    align-items: center;
-}
-
-.btn-hover::before {
-    z-index: 1;
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    background-color: var(--main-color);
-    transition: 0.3s ease-in-out;
-}
-
-.btn-hover:hover::before {
-    width: 100%;
-}
-
-.btn i,
-.btn span {
-    z-index: 1;
-}
-
-.btn i {
-    margin-right: 1rem;
-}
-
-.hamburger-menu {
-    --size: 30px;
-    height: var(--size);
-    width: var(--size);
-    cursor: pointer;
-    z-index: 101;
-    position: relative;
-    display: none;
-    align-items: center;
-}
-
-.hamburger {
-    position: relative;
-}
-
-.hamburger,
-.hamburger::before,
-.hamburger::after {
-    width: var(--size);
-    height: 3px;
-    border-radius: 0.5rem;
-    background-color: var(--text-color);
-    transition: 0.4s;
-}
-
-.hamburger::before,
-.hamburger::after {
-    content: "";
-    position: absolute;
-    left: 0;
-}
-
-.hamburger::before {
-    top: -10px;
-}
-
-.hamburger::after {
-    bottom: -10px;
-}
-
-.hamburger-menu.active .hamburger {
-    background-color: transparent;
-}
-
-.hamburger-menu.active .hamburger::before {
-    transform-origin: top left;
-    transform: rotate(45deg);
-    left: 6px;
-}
-
-.hamburger-menu.active .hamburger::after {
-    transform-origin: bottom left;
-    transform: rotate(-45deg);
-    left: 6px;
-}
-
-.hero-slide-item {
-    padding-top: 40%;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero-slide-item img {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.hero-slide-item-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    color: var(--text-color);
-    display: flex;
-}
-
-.item-content-wraper {
-    padding-left: 5rem;
-    width: 40%;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-}
-
-.item-content-wraper::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 100%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
-}
-
-.item-content-title {
-    font-size: 5rem;
-    line-height: 5rem;
-    font-weight: 900;
-}
-
-.movie-infos {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-top: calc(var(--space-top) / 2);
-}
-
-.movie-info {
-    display: flex;
-    align-items: center;
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-
-.movie-info span {
-    margin-left: 5px;
-}
-
-.movie-info i {
-    color: var(--main-color);
-}
-
-.movie-info ~ .movie-info {
-    margin-left: 5px;
-}
-
-.item-content-description {
-    font-size: 1.15rem;
-    margin-top: var(--space-top);
-    line-height: 1.5rem;
-}
-
-.item-action {
-    margin-top: var(--space-top);
-}
-
-.carousel-nav-center {
-    position: relative;
-}
-
-.carousel-nav-center .owl-nav button i {
-    font-size: 3rem;
-}
-
-.carousel-nav-center .owl-nav button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.carousel-nav-center .owl-nav .owl-prev {
-    position: absolute;
-    left: 5px;
-}
-
-.carousel-nav-center .owl-nav .owl-next {
-    position: absolute;
-    right: 5px;
-}
-
-.owl-nav button {
-    border: none;
-    outline: none;
-}
-
-.owl-nav button i {
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 50%;
-}
-
-.owl-nav button:hover i {
-    color: var(--main-color);
-}
-
-.top-down {
-    transform: translateY(-50px);
-    visibility: hidden;
-    opacity: 0;
-    transition: 0.5s ease-in-out;
-}
-
-.delay-2 {
-    transition-delay: 0.2s;
-}
-
-.delay-4 {
-    transition-delay: 0.4s;
-}
-
-.delay-6 {
-    transition-delay: 0.6s;
-}
-
-.delay-8 {
-    transition-delay: 0.8s;
-}
-
-.owl-item.active .top-down {
-    transform: translateY(0);
-    visibility: visible;
-    opacity: 1;
-}
-
-.movie-item {
-    display: block;
-    position: relative;
-    overflow: hidden;
-    padding-top: 140%;
-    cursor: pointer;
-}
-
-.movie-item img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    transition: transform 0.3s linear;
-}
-
-.movie-item:hover img {
-    transform: scale(1.2);
-}
-
-.movie-item-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 5px;
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.movie-item-content::before {
-    content: "";
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
-}
-
-.movie-item-title {
-    color: var(--text-color);
-    font-size: 1.5rem;
-    position: relative;
-    font-weight: 700;
-}
-
-.section {
-    padding-top: 80px;
-}
-
-.section-header {
-    margin-bottom: 30px;
-    padding-left: 20px;
-    text-transform: uppercase;
-    font-size: 1.5rem;
-    font-weight: 700;
-    border-left: 4px solid var(--main-color);
-    display: flex;
-    align-items: center;
-}
-
-.pricing-header {
-    margin-bottom: 30px;
-    text-align: center;
-    font-size: 2rem;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.pricing-box {
-    padding: 50px;
-    margin: 15px 0;
-    background-color: var(--box-bg);
-    border-top: 5px solid transparent;
-    transition: transform 0.3s ease-in-out;
-}
-
-.pricing-box:hover {
-    transform: translateY(-20px);
-}
-
-.pricing-box.hightlight {
-    border-top: 5px solid var(--main-color);
-}
-
-.pricing-box-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 1.5rem;
-}
-
-.pricing-price {
-    font-weight: 700;
-}
-
-.pricing-price span {
-    font-size: 1rem;
-}
-
-.pricing-box-content {
-    text-align: center;
-    margin-top: 60px;
-    font-size: 1.25rem;
-}
-
-.pricing-box-action {
-    text-align: center;
-    margin-top: 60px;
-}
-
-footer.section {
-    margin-top: 80px;
-    padding-bottom: 80px;
-    position: relative;
-    background-color: var(--box-bg);
-}
-
-footer a:hover {
-    color: var(--main-color);
-}
-
-footer a.logo {
-    margin-top: -2.5rem;
-    display: block;
-}
-
-footer a.logo:hover {
-    color: unset;
-}
-
-.social-list {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.social-item {
-    --size: 30px;
-    height: var(--size);
-    width: var(--size);
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
-    background-color: var(--text-color);
-    color: var(--main-color);
-}
-
-.social-item:hover {
-    background-color: var(--main-color);
-    color: var(--text-color);
-}
-
-.social-item ~ .social-item {
-    margin-left: 20px;
-}
-
-footer .content {
-    margin-top: 20px;
-}
-
-.footer-menu {
-    list-style-type: none;
-}
-
-.footer-menu a {
-    display: inline-block;
-    transition: transform 0.2s ease-in-out;
-}
-
-.footer-menu a:hover {
-    transform: translateX(5px);
-}
-
-.copyright {
-    padding: 10px;
-    border-top: 1px solid var(--body-bg);
-    background-color: var(--box-bg);
-    text-align: center;
-}
-
-/* RESPONSIVE */
-
-@media only screen and (max-width: 1280px) {
-    html {
-        font-size: 14px;
-    }
-
-    .hero-slide-item {
-        padding-top: 50%;
-    }
-
-    .item-content-wraper {
-        width: 50%;
-    }
-}
-
-@media only screen and (max-width: 850px) {
-    html {
-        font-size: 12px;
-    }
-
-    .container {
-        padding: 0 15px;
-    }
-
-    .hero-slide-item {
-        height: max-content;
-        padding-top: unset;
-    }
-
-    .item-content-wraper {
-        width: 100%;
-        height: 100%;
-        padding-bottom: 20px;
-        padding-right: 5rem;
-        background-color: rgba(0, 0, 0, 0.2);
-    }
-
-    .hero-slide-item-content {
-        position: relative;
-    }
-
-    .hero-slide-item img {
-        height: 100%;
-    }
-
-    .item-content-title {
-        font-size: 3rem;
-    }
-
-    .hamburger-menu {
-        display: grid;
-    }
-
-    .nav-menu {
-        /* display: none; */
-        position: absolute;
-        top: 100%;
-        left: -100%;
-        background-color: #000000;
-        flex-direction: column;
-        width: 80%;
-        height: 100vh;
-        padding: 20px;
-        transition: 0.3s ease-in-out;
-    }
-
-    .nav-menu li {
-        margin: 10px 30px;
-    }
-
-    .nav-menu.active {
-        left: 0;
-    }
-}
-
-
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 -15px;
-}
-
-[class*="col-"] {
-    padding: 0 15px;
-}
-
-.col-1 {
-    width: 8.33%;
-}
-
-.col-2 {
-    width: 16.66%;
-}
-
-.col-3 {
-    width: 25%;
-}
-
-.col-4 {
-    width: 33.33%;
-}
-
-.col-5 {
-    width: 41.66%;
-}
-
-.col-6 {
-    width: 50%;
-}
-
-.col-7 {
-    width: 58.33%;
-}
-
-.col-8 {
-    width: 66.66%;
-}
-
-.col-9 {
-    width: 75%;
-}
-
-.col-10 {
-    width: 83.33%;
-}
-
-.col-11 {
-    width: 91.66%;
-}
-
-.col-12 {
-    width: 100%;
-}
-
-/* MEDIUM SCREEN */
-
-@media only screen and (max-width: 1280px) {
-    .col-md-1 {
-        width: 8.33%;
-    }
-
-    .col-md-2 {
-        width: 16.66%;
-    }
-
-    .col-md-3 {
-        width: 25%;
-    }
-
-    .col-md-4 {
-        width: 33.33%;
-    }
-
-    .col-md-5 {
-        width: 41.66%;
-    }
-
-    .col-md-6 {
-        width: 50%;
-    }
-
-    .col-md-7 {
-        width: 58.33%;
-    }
-
-    .col-md-8 {
-        width: 66.66%;
-    }
-
-    .col-md-9 {
-        width: 75%;
-    }
-
-    .col-md-10 {
-        width: 83.33%;
-    }
-
-    .col-md-11 {
-        width: 91.66%;
-    }
-
-    .col-md-12 {
-        width: 100%;
-    }
-}
-
-/* SMALL SCREEN */
-
-@media only screen and (max-width: 850px) {
-    .col-sm-1 {
-        width: 8.33%;
-    }
-
-    .col-sm-2 {
-        width: 16.66%;
-    }
-
-    .col-sm-3 {
-        width: 25%;
-    }
-
-    .col-sm-4 {
-        width: 33.33%;
-    }
-
-    .col-sm-5 {
-        width: 41.66%;
-    }
-
-    .col-sm-6 {
-        width: 50%;
-    }
-
-    .col-sm-7 {
-        width: 58.33%;
-    }
-
-    .col-sm-8 {
-        width: 66.66%;
-    }
-
-    .col-sm-9 {
-        width: 75%;
-    }
-
-    .col-sm-10 {
-        width: 83.33%;
-    }
-
-    .col-sm-11 {
-        width: 91.66%;
-    }
-
-    .col-sm-12 {
-        width: 100%;
-    }
-}
-
-</style>
-
 <body>
-
-    <!-- NAV -->
-    <div class="nav-wrapper">
-        <div class="container">
-            <div class="nav">
-                <a href="#" class="logo">
-                    <i class='bx bx-movie-play bx-tada main-color'></i>Pelis<span class="main-color">VIP</span>
-                </a>
-                <ul class="nav-menu" id="nav-menu">
-                    <li><a href="#">Inicio</a></li>
-                    <!-- <li><a href="http://aftv.news/7645567">Descargar</a></li> -->
-                    <li><a href="generos.html">Géneros</a></li>
-                    <li><a href="go:series">Series</a></li>
-                    <li><a href="go:doramas">Doramas</a></li>
-                    <li><a href="go:tv">TV</a></li>
-                    <li><a href="http://action_share">Compartir</a></li>
-                    <li>
-                        <a href="http://action_search" class="btn btn-hover">
-                            <span>Buscar</span>
-                        </a>
-                    </li>
-                </ul>
-                <!-- MOBILE MENU TOGGLE -->
-                <div class="hamburger-menu" id="hamburger-menu">
-                    <div class="hamburger"></div>
+    <!-- Navbar -->
+    <nav class="bg-gray-900/80 backdrop-blur-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-white">
+                        <span class="text-blue-500">Pelis</span>VIP
+                    </span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="text-gray-300 hover:text-white transition">Inicio</a>
+                    <a href="#caracteristicas" class="text-gray-300 hover:text-white transition">Características</a>
+                    <a href="#contenido" class="text-gray-300 hover:text-white transition">Contenido</a>
+                    <a href="#dispositivos" class="text-gray-300 hover:text-white transition">Dispositivos</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-white focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- END NAV -->
+    </nav>
 
-    <!-- HERO SECTION -->
-    <div class="hero-section">
-        <!-- HERO SLIDE -->
-        <div class="hero-slide">
-            <div class="owl-carousel carousel-nav-center" id="hero-carousel">
-                <!-- SLIDE ITEM -->
-                <div class="hero-slide-item">
-                    <img src="https://media.elcomercio.com/wp-content/uploads/2025/04/thunderbolts-marvel-El-Comercio-1024x683.jpg" alt="">
-                    <div class="overlay"></div>
-                    <div class="hero-slide-item-content">
-                        <div class="item-content-wraper">
-                            <div class="item-content-title top-down">
-                                Thunderbolts
-                            </div>
-                            <div class="movie-infos top-down delay-2">
-                                <div class="movie-info">
-                                    <i class="bx bxs-star"></i>
-                                    <span>9.5</span>
-                                </div>
-                                <div class="movie-info">
-                                    <i class="bx bxs-time"></i>
-                                    <span>127 mins</span>
-                                </div>
-                                <div class="movie-info">
-                                    <span>HD</span>
-                                </div>
-                                <div class="movie-info">
-                                    <span>16+</span>
-                                </div>
-                            </div>
-                            <div class="item-content-description top-down delay-4">
-                                Después de que Yelena Belova, Fantasma, Taskmaster y U.S. Agent se vean arrinconados en una trampa mortal tendida por Valentina Allegra de Fontaine, estos rechazados desilusionados, uniendo fuerzas junto con el Guardián Rojo y Bucky, deben embarcarse en una peligrosa misión que los obligará a enfrentar los rincones más oscuros de sus pasados.
-                            </div>
-                            <div class="item-action top-down delay-6">
-                                <a href="https://drive.google.com/file/d/1ka1MtYRVUJFlStidHGPo6IJrAZr2gt77/preview" class="btn btn-hover">
-                                    <i class="bx bxs-right-arrow"></i>
-                                    <span>Reproducir</span>
-                                </a>
-                            </div>
-                        </div>
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-gradient pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                    Disfruta de tus películas y series favoritas en 
+                    <span class="text-blue-400">cualquier dispositivo</span>
+                </h1>
+                <p class="text-xl text-gray-300 mb-8">
+                    PelisVIP ofrece la mejor experiencia de streaming con contenido exclusivo, calidad 4K y soporte multicontenido.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#" class="btn-primary py-3 px-8 rounded-full font-semibold text-white inline-flex items-center justify-center">
+                        <i class="fas fa-download mr-2"></i> Descargar App
+                    </a>
+                    <a href="#" class="bg-transparent border border-gray-600 py-3 px-8 rounded-full font-semibold hover:bg-gray-800 transition inline-flex items-center justify-center">
+                        <i class="fas fa-play mr-2"></i> Ver Demo
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1b8b1b65-9e7c-42d1-9fc1-e88427301947.png" alt="Aplicación PelisVIP mostrada en múltiples dispositivos: smartphone, tablet y televisión inteligente" class="rounded-xl shadow-2xl">
+                    <div class="absolute -bottom-6 -right-6 bg-blue-600 w-16 h-16 rounded-full flex items-center justify-center">
+                        <i class="fas fa-play text-white text-xl"></i>
                     </div>
                 </div>
-                <!-- END SLIDE ITEM -->
-                <!-- SLIDE ITEM -->
-                <div class="hero-slide-item">
-                    <img src="https://media.elcomercio.com/wp-content/uploads/2021/06/Jurassic-World-1024x683.jpg" alt="">
-                    <div class="overlay"></div>
-                    <div class="hero-slide-item-content">
-                        <div class="item-content-wraper">
-                            <div class="item-content-title top-down">
-                                Jurassic World: Renace
-                            </div>
-                            <div class="movie-infos top-down delay-2">
-                                <div class="movie-info">
-                                    <i class="bx bxs-star"></i>
-                                    <span>9.5</span>
-                                </div>
-                                <div class="movie-info">
-                                    <i class="bx bxs-time"></i>
-                                    <span>124 mins</span>
-                                </div>
-                                <div class="movie-info">
-                                    <span>CAM</span>
-                                </div>
-                                <div class="movie-info">
-                                    <span>16+</span>
-                                </div>
-                            </div>
-                            <div class="item-content-description top-down delay-4">
-                                Cinco años después de Dominion, la ecología del planeta ha demostrado ser en gran medida inhóspita para los dinosaurios. Las criaturas más colosales de esa biosfera tienen la clave para un fármaco que salvará vidas.
-                            </div>
-                            <div class="item-action top-down delay-6">
-                                <a href="https://drive.google.com/file/d/1hMYFQDih0XjInx3MwXdCf6STVulePuLr/preview" class="btn btn-hover">
-                                    <i class="bx bxs-right-arrow"></i>
-                                    <span>Reproducir</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- END SLIDE ITEM -->
-                <!-- SLIDE ITEM -->
-                <div class="hero-slide-item">
-                    <img src="https://m.media-amazon.com/images/M/MV5BYzFkNDZiMzAtZjg4Zi00M2U1LWI1MGYtMjY1MDExOTJlZjkxXkEyXkFqcGc@._V1_.jpg" alt="">
-                    <div class="overlay"></div>
-                    <div class="hero-slide-item-content">
-                        <div class="item-content-wraper">
-                            <div class="item-content-title top-down">
-                                Jefes de Estado
-                            </div>
-                            <div class="movie-infos top-down delay-2">
-                                <div class="movie-info">
-                                    <i class="bx bxs-star"></i>
-                                    <span>9.5</span>
-                                </div>
-                                <div class="movie-info">
-                                    <i class="bx bxs-time"></i>
-                                    <span>116 mins</span>
-                                </div>
-                                <div class="movie-info">
-                                    <span>HD</span>
-                                </div>
-                                <div class="movie-info">
-                                    <span>16+</span>
-                                </div>
-                            </div>
-                            <div class="item-content-description top-down delay-4">
-                                El Primer Ministro del Reino Unido (Idris Elba) y el Presidente de los Estados Unidos (John Cena) mantienen una rivalidad pública que pone en peligro la alianza de sus países.
-                            </div>
-                            <div class="item-action top-down delay-6">
-                                <a href="https://drive.google.com/file/d/16kBjLZ4J1G-Q7oLCr6Nof84W4HoetjnB/preview" class="btn btn-hover">
-                                    <i class="bx bxs-right-arrow"></i>
-                                    <span>Reproducir</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- END SLIDE ITEM -->
             </div>
         </div>
-        <!-- END HERO SLIDE -->
-        <!-- TOP MOVIES SLIDE -->
-        <div class="top-movies-slide">
-            <div class="owl-carousel" id="top-movies-slide">
-                <!-- MOVIE ITEM -->
-                <div class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2F9WPWF0AmklsKclrXeyKXbQ543ZA.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            The AMATEUR
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>9.5</span>
-                            </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
-                                <span>120 mins</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>HD</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
-                            </div>
-                        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="caracteristicas" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Características Exclusivas</h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Descubre todo lo que hace especial a PelisVIP
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="feature-card p-8 rounded-xl">
+                    <div class="feature-icon mb-6">
+                        <i class="fas fa-film text-blue-400 text-2xl"></i>
                     </div>
+                    <h3 class="text-xl font-bold mb-3">Contenido Exclusivo</h3>
+                    <p class="text-gray-400">
+                        Acceso a películas y series que no encontrarás en otras plataformas de streaming.
+                    </p>
                 </div>
-                <!-- END MOVIE ITEM -->
-                <!-- MOVIE ITEM -->
-                <div class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2FrlypLxmi1IHhp1TJqzyazSQT92U.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            Criaturas de la noche
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>9.5</span>
-                            </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
-                                <span>120 mins</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>HD</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
-                            </div>
-                        </div>
+                
+                <div class="feature-card p-8 rounded-xl">
+                    <div class="feature-icon mb-6">
+                        <i class="fas fa-tv text-blue-400 text-2xl"></i>
                     </div>
+                    <h3 class="text-xl font-bold mb-3">Multiplataforma</h3>
+                    <p class="text-gray-400">
+                        Disfruta en tu móvil, tablet, computadora o directamente en tu televisor.
+                    </p>
                 </div>
-                <!-- END MOVIE ITEM -->
-                <!-- MOVIE ITEM -->
-                <div class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2F3rZ88ku1sSbdpFvTl4i5KFXx1Bx.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            Mentes simples
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>9.5</span>
-                            </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
-                                <span>120 mins</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>HD</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
-                            </div>
-                        </div>
+                
+                <div class="feature-card p-8 rounded-xl">
+                    <div class="feature-icon mb-6">
+                        <i class="fas fa-download text-blue-400 text-2xl"></i>
                     </div>
+                    <h3 class="text-xl font-bold mb-3">Descargas Offline</h3>
+                    <p class="text-gray-400">
+                        Descarga tus películas y series favoritas para verlas sin conexión a internet.
+                    </p>
                 </div>
-                <!-- END MOVIE ITEM -->
-                <!-- MOVIE ITEM -->
-                <div class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2F4I0OOU9ALso0fjavHJRkXjUFMZo.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            Empezar de nuevo
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>9.5</span>
-                            </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
-                                <span>120 mins</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>HD</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
-                            </div>
-                        </div>
+                
+                <div class="feature-card p-8 rounded-xl">
+                    <div class="feature-icon mb-6">
+                        <i class="fas fa-closed-captioning text-blue-400 text-2xl"></i>
                     </div>
+                    <h3 class="text-xl font-bold mb-3">Multi-idioma</h3>
+                    <p class="text-gray-400">
+                        Disponible en varios idiomas con subtítulos para una mejor experiencia.
+                    </p>
                 </div>
-                <!-- END MOVIE ITEM -->
-                <!-- MOVIE ITEM -->
-                <div class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2F4GGUlUtGA2rk3TvSulfVCpW9OzS.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            Masameer
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>9.5</span>
-                            </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
-                                <span>120 mins</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>HD</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
-                            </div>
-                        </div>
+                
+                <div class="feature-card p-8 rounded-xl">
+                    <div class="feature-icon mb-6">
+                        <i class="fas fa-users text-blue-400 text-2xl"></i>
                     </div>
+                    <h3 class="text-xl font-bold mb-3">Perfiles Múltiples</h3>
+                    <p class="text-gray-400">
+                        Crea hasta 5 perfiles diferentes con sus propias recomendaciones y preferencias.
+                    </p>
                 </div>
-                <!-- END MOVIE ITEM -->
-                <!-- MOVIE ITEM -->
-                <div class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2F1E4WCgTodyS7zo8pSp1gZlPO0th.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            Echo Valley
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>9.5</span>
-                            </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
-                                <span>120 mins</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>HD</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
-                            </div>
-                        </div>
+                
+                <div class="feature-card p-8 rounded-xl">
+                    <div class="feature-icon mb-6">
+                        <i class="fas fa-baby text-blue-400 text-2xl"></i>
                     </div>
+                    <h3 class="text-xl font-bold mb-3">Modo Kids</h3>
+                    <p class="text-gray-400">
+                        Contenido especial para niños con controles parentales avanzados.
+                    </p>
                 </div>
-                <!-- END MOVIE ITEM -->
             </div>
         </div>
-        <!-- END TOP MOVIES SLIDE -->
-    </div>
-    <!-- END HERO SECTION -->
+    </section>
 
-    <!-- LATEST MOVIES SECTION -->
-    <div class="section">
-        <div class="container">
-            <div class="section-header">
-                Últimas Películas
+    <!-- Content Section -->
+    <section id="contenido" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Explora Nuestro Contenido</h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Miles de horas de entretenimiento para todos los gustos
+                </p>
             </div>
-            <div class="movies-slide carousel-nav-center owl-carousel">
-                <!-- MOVIE ITEM -->
-                <a href="go:f1la" class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2FyKIG63pXN89EfbTA7yKpwxAU1rf.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            F1: la película
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>9.5</span>
-                            </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
-                                <span>148 mins</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>CAM</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
+            
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold mb-6">Películas Destacadas</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                    <div class="content-card rounded-lg overflow-hidden">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fa3c6ec9-f57c-4e38-9488-c2134349d842.png" alt="Cartel de película de acción: héroe con traje futurista en medio de una explosión en la ciudad" class="w-full h-auto">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 flex items-end p-4 opacity-0 hover:opacity-100 transition">
+                                <button class="btn-primary py-1 px-3 rounded-full text-sm font-medium">
+                                    Reproducir
+                                </button>
                             </div>
                         </div>
-                    </div>
-                </a>
-                <!-- END MOVIE ITEM -->
-                <!-- MOVIE ITEM -->
-                <a href="go:empe" class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2F4I0OOU9ALso0fjavHJRkXjUFMZo.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            Empezar de nuevo
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>9.5</span>
-                            </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
-                                <span>104 mins</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>HD</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <!-- END MOVIE ITEM -->
-                <!-- MOVIE ITEM -->
-                <a href="go:echo" class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2F1E4WCgTodyS7zo8pSp1gZlPO0th.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            Echo Valley
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>9.5</span>
-                            </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
-                                <span>104 mins</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>HD</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <!-- END MOVIE ITEM -->
-                <!-- MOVIE ITEM -->
-                <a href="go:mega" class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2FfBgyUqyu3ioTSQjJJE5RFs2EG3B.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            Megan 2.0
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>9.5</span>
-                            </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
-                                <span>113 mins</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>CAM</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <!-- END MOVIE ITEM -->
-                <!-- MOVIE ITEM -->
-                <a href="go:infi" class="movie-item">
-                    <img src="https://www.lavanguardia.com/peliculas-series/images/movie/poster/2025/6/w1280/eI6TdYgT8kLe1vSOYNbqitAn5yp.jpg" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            Infiltrada en el búnker
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>9.5</span>
-                            </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
-                                <span>Documental</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>HD</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <!-- END MOVIE ITEM -->
-                <!-- MOVIE ITEM -->
-                <a href="go:torr" class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2F2kjTyXPJUqGs1iAwL1nIEyj0rew.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            Torre Grenfell
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>9.5</span>
-                            </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
-                                <span>Documental</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>HD</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <!-- END MOVIE ITEM -->
-                <!-- MOVIE ITEM -->
-                <a href="go:exte" class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2FhvIqaDUC48dwfd7taKczB7909Qg.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            Exterminio: La evolución
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>9.5</span>
-                            </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
-                                <span>111 mins</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>CAM</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <!-- END MOVIE ITEM -->
-            </div>
-        </div>
-    </div>
-    <!-- END LATEST MOVIES SECTION -->
-
-    <!-- LATEST SERIES SECTION -->
-    <div class="section">
-        <div class="container">
-            <div class="section-header">
-                Últimas Series
-            </div>
-            <div class="movies-slide carousel-nav-center owl-carousel">
-                <!-- MOVIE ITEM -->
-                <a href="go:jueg" class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2F74qMRUy0lwkBBi39vsQVerIDkHj.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            Juego del calamar
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>Netflix</span>
-                            </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
+                        <div class="p-4">
+                            <h4 class="font-semibold mb-1">Misión Extrema 5</h4>
+                            <div class="flex items-center text-gray-400 text-sm">
                                 <span>Acción</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>HD</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
+                                <span class="mx-2">•</span>
+                                <span>2023</span>
                             </div>
                         </div>
                     </div>
-                </a>
-                <!-- END MOVIE ITEM -->
-                <!-- MOVIE ITEM -->
-                <a href="go:iron" class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2F1z0nm8ZkPfxYuIdjZXxSIgl8SCz.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            Ironheart
+                    
+                    <div class="content-card rounded-lg overflow-hidden">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b497c710-01e7-4a73-a8f8-ca0a26227a8c.png" alt="Cartel de terror: casa embrujada con silueta escalofriante en la ventana bajo luna llena" class="w-full h-auto">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 flex items-end p-4 opacity-0 hover:opacity-100 transition">
+                                <button class="btn-primary py-1 px-3 rounded-full text-sm font-medium">
+                                    Reproducir
+                                </button>
+                            </div>
                         </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>Disney+</span>
-                            </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
-                                <span>Fantasía</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>HD</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
+                        <div class="p-4">
+                            <h4 class="font-semibold mb-1">La Casa del Silencio</h4>
+                            <div class="flex items-center text-gray-400 text-sm">
+                                <span>Terror</span>
+                                <span class="mx-2">•</span>
+                                <span>2022</span>
                             </div>
                         </div>
                     </div>
-                </a>
-                <!-- END MOVIE ITEM -->
-                <!-- MOVIE ITEM -->
-                <a href="go:ches" class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2FbVBj1GlvwiN7PMuf4t6JmcRZHd9.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            Chespirito: Sin querer queriendo
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>Claro Video</span>
+                    
+                    <div class="content-card rounded-lg overflow-hidden">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/21982221-838d-4244-a963-e44df29ed861.png" alt="Cartel de comedia romántica: pareja abrazándose bajo la lluvia en una escena cómica" class="w-full h-auto">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 flex items-end p-4 opacity-0 hover:opacity-100 transition">
+                                <button class="btn-primary py-1 px-3 rounded-full text-sm font-medium">
+                                    Reproducir
+                                </button>
                             </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold mb-1">Amor en Tiempos de Zoom</h4>
+                            <div class="flex items-center text-gray-400 text-sm">
                                 <span>Comedia</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>HD</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
+                                <span class="mx-2">•</span>
+                                <span>2021</span>
                             </div>
                         </div>
                     </div>
-                </a>
-                <!-- END MOVIE ITEM -->
-                <!-- MOVIE ITEM -->
-                <a href="go:cuen" class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2Fp69fxSp0XoKXhaPduoUNBse3ibt.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            Cuenta regresiva
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>Prime Video</span>
+                    
+                    <div class="content-card rounded-lg overflow-hidden">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e4aa9ffa-9f94-4f6d-9529-661f4b3c5fc4.png" alt="Cartel de ciencia ficción: astronautas en un planeta alienígena con cielo morado y tres soles" class="w-full h-auto">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 flex items-end p-4 opacity-0 hover:opacity-100 transition">
+                                <button class="btn-primary py-1 px-3 rounded-full text-sm font-medium">
+                                    Reproducir
+                                </button>
                             </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold mb-1">Odisea en Kepler-186f</h4>
+                            <div class="flex items-center text-gray-400 text-sm">
+                                <span>Ciencia Ficción</span>
+                                <span class="mx-2">•</span>
+                                <span>2023</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-card rounded-lg overflow-hidden">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/833dd405-daab-4737-be50-17b314e44269.png" alt="Cartel de documental: ballena jorobada bajo el agua con rayos de sol filtrándose en el océano" class="w-full h-auto">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 flex items-end p-4 opacity-0 hover:opacity-100 transition">
+                                <button class="btn-primary py-1 px-3 rounded-full text-sm font-medium">
+                                    Reproducir
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold mb-1">Planeta Azul</h4>
+                            <div class="flex items-center text-gray-400 text-sm">
+                                <span>Documental</span>
+                                <span class="mx-2">•</span>
+                                <span>2020</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12">
+                <h3 class="text-2xl font-semibold mb-6">Series Populares</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                    <div class="content-card rounded-lg overflow-hidden">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6310ff70-d31f-4d41-adff-9b6652721f98.png" alt="Cartel de serie policiaca: detective con gabardina sosteniendo un arma bajo la lluvia en la ciudad" class="w-full h-auto">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 flex items-end p-4 opacity-0 hover:opacity-100 transition">
+                                <button class="btn-primary py-1 px-3 rounded-full text-sm font-medium">
+                                    Reproducir
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold mb-1">Callejones Oscuros</h4>
+                            <div class="flex items-center text-gray-400 text-sm">
+                                <span>Policiaco</span>
+                                <span class="mx-2">•</span>
+                                <span>3 Temporadas</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-card rounded-lg overflow-hidden">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d8860531-f220-428d-9b19-3f77c9a11c0d.png" alt="Cartel de serie adolescente: grupo diverso de jóvenes riendo en un parque universitario" class="w-full h-auto">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 flex items-end p-4 opacity-0 hover:opacity-100 transition">
+                                <button class="btn-primary py-1 px-3 rounded-full text-sm font-medium">
+                                    Reproducir
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold mb-1">Años Dorados</h4>
+                            <div class="flex items-center text-gray-400 text-sm">
                                 <span>Drama</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>HD</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
+                                <span class="mx-2">•</span>
+                                <span>2 Temporadas</span>
                             </div>
                         </div>
                     </div>
-                </a>
-                <!-- END MOVIE ITEM -->
-                <!-- MOVIE ITEM -->
-                <a href="go:mata" class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2FntZB7o2CONuXtjPctRVRsiIZvxj.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            Matabot
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>Apple TV+</span>
+                    
+                    <div class="content-card rounded-lg overflow-hidden">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b6160a0e-d9d6-43db-be26-cd86a83b2ba4.png" alt="Cartel de serie de fantasía: mago con capa levantando un hechizo con manos brillantes en bosque encantado" class="w-full h-auto">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 flex items-end p-4 opacity-0 hover:opacity-100 transition">
+                                <button class="btn-primary py-1 px-3 rounded-full text-sm font-medium">
+                                    Reproducir
+                                </button>
                             </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold mb-1">El Último Hechicero</h4>
+                            <div class="flex items-center text-gray-400 text-sm">
+                                <span>Fantasía</span>
+                                <span class="mx-2">•</span>
+                                <span>4 Temporadas</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-card rounded-lg overflow-hidden">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0324a85d-2af7-4e07-a867-f62b385a75c7.png" alt="Cartel de serie de comedia: familia dispar sentada en sofá en medio de un caos doméstico hilarante" class="w-full h-auto">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 flex items-end p-4 opacity-0 hover:opacity-100 transition">
+                                <button class="btn-primary py-1 px-3 rounded-full text-sm font-medium">
+                                    Reproducir
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold mb-1">Mi Loca Casa</h4>
+                            <div class="flex items-center text-gray-400 text-sm">
                                 <span>Comedia</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>HD</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
+                                <span class="mx-2">•</span>
+                                <span>5 Temporadas</span>
                             </div>
                         </div>
                     </div>
-                </a>
-                <!-- END MOVIE ITEM -->
-                <!-- MOVIE ITEM -->
-                <a href="go:tier" class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2FeTPbSopejE9fQeloyJiBTOSFKKh.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            Tierra de mafia
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>Paramount+</span>
-                            </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
-                                <span>Crimen</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>HD</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
+                    
+                    <div class="content-card rounded-lg overflow-hidden">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/cd66d4f6-79f7-4ac5-ad08-b13d4cb7e64c.png" alt="Cartel de serie histórica: noble medieval en castillo iluminado con velas mirando documentos antiguos" class="w-full h-auto">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 flex items-end p-4 opacity-0 hover:opacity-100 transition">
+                                <button class="btn-primary py-1 px-3 rounded-full text-sm font-medium">
+                                    Reproducir
+                                </button>
                             </div>
                         </div>
-                    </div>
-                </a>
-                <!-- END MOVIE ITEM -->
-                <!-- MOVIE ITEM -->
-                <a href="go:ladr" class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2FxQFbx9odrostLxpfB1cPBgQrkQY.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            Ladrones: La tiara de santa Águeda
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>Disney+</span>
-                            </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
-                                <span>Acción</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>HD</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <!-- END MOVIE ITEM -->
-            </div>
-        </div>
-    </div>
-    <!-- END LATEST SERIES SECTION -->
-
-    <!-- LATEST CARTOONS SECTION -->
-    <div class="section">
-        <div class="container">
-            <div class="section-header">
-                Últimas Caricaturas
-            </div>
-            <div class="movies-slide carousel-nav-center owl-carousel">
-                <!-- MOVIE ITEM -->
-                <a href="go:dora" class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2FsVLSOnGfNXj7VVGBgOz5cNa0lDz.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            Dora
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>9.5</span>
-                            </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
-                                <span>96 mins</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>HD</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <!-- END MOVIE ITEM -->
-                <!-- MOVIE ITEM -->
-                <a href="go:elio" class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2FfGjwHlv8bCjZypi2bHbbSmyIGMV.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            Elio
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>9.5</span>
-                            </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
-                                <span>83 mins</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>HD</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <!-- END MOVIE ITEM -->
-                <!-- MOVIE ITEM -->
-                <a href="go:lasg" class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2FswQRKmW7RLhncPYHvM0RHz8b7bT.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            Las guerreras k-pop
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>9.5</span>
-                            </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
-                                <span>99 mins</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>HD</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <!-- END MOVIE ITEM -->
-                <!-- MOVIE ITEM -->
-                <a href="go:como" class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2FsGFO6VshDEQ9vX4tOSobLJpkNhq.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            Cómo entrenar a tu dragón
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>9.5</span>
-                            </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
-                                <span>117 mins</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>CAM</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <!-- END MOVIE ITEM -->
-                <!-- MOVIE ITEM -->
-                <a href="go:lulu" class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2FbenRKKXC4337aP5rsnW91afi2PS.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            Lulu es una rinoceronte
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>9.5</span>
-                            </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
-                                <span>47 mins</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>HD</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <!-- END MOVIE ITEM -->
-                <!-- MOVIE ITEM -->
-                <a href="go:lilo" class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2FtUae3mefrDVTgm5mRzqWnZK6fOP.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            Lilo y Stitch
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>9.5</span>
-                            </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
-                                <span>96 mins</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>CAM</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <!-- END MOVIE ITEM -->
-                <!-- MOVIE ITEM -->
-                <a href="go:form" class="movie-item">
-                    <img src="https://www.cuevana.is/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2F2egvcQPqrXBgPHdK6hhznptaiiY.jpg&w=256&q=75" alt="">
-                    <div class="movie-item-content">
-                        <div class="movie-item-title">
-                            Formula vody
-                        </div>
-                        <div class="movie-infos">
-                            <div class="movie-info">
-                                <i class="bx bxs-star"></i>
-                                <span>9.5</span>
-                            </div>
-                            <div class="movie-info">
-                                <i class="bx bxs-time"></i>
-                                <span>72 mins</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>HD</span>
-                            </div>
-                            <div class="movie-info">
-                                <span>16+</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <!-- END MOVIE ITEM -->
-            </div>
-        </div>
-    </div>
-    <!-- END LATEST CARTOONS SECTION -->
-
-    <!-- SPECIAL MOVIE SECTION -->
-    <div class="section">
-        <div class="hero-slide-item">
-            <img src="https://s3.abcstatics.com/abc/www/multimedia/play/2025/03/25/elio-kEtE--1024x512@diario_abc.jpg" alt="">
-            <div class="overlay"></div>
-            <div class="hero-slide-item-content">
-                <div class="item-content-wraper">
-                    <div class="item-content-title">
-                        Elio
-                    </div>
-                    <div class="movie-infos">
-                        <div class="movie-info">
-                            <i class="bx bxs-star"></i>
-                            <span>9.5</span>
-                        </div>
-                        <div class="movie-info">
-                            <i class="bx bxs-time"></i>
-                            <span>83 mins</span>
-                        </div>
-                        <div class="movie-info">
-                            <span>HD</span>
-                        </div>
-                        <div class="movie-info">
-                            <span>16+</span>
-                        </div>
-                    </div>
-                    <div class="item-content-description">
-                        Elio, un niño fanático del espacio con una imaginación activa, se encuentra en una desventura cósmica en la que debe formar nuevos vínculos con excéntricas formas de vida alienígenas, navegar por una crisis de proporciones intergalácticas y, de alguna manera, descubrir quién está realmente destinado a ser.
-                    </div>
-                    <div class="item-action">
-                        <a href="https://drive.google.com/file/d/1O9YjaCteQSHb2_OR-C0cEAUlNrZnbZ2h/preview" class="btn btn-hover">
-                            <i class="bx bxs-right-arrow"></i>
-                            <span>Reproducir</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- END SPECIAL MOVIE SECTION -->
-
-    <!-- PRICING SECTION -->
-    <div class="section">
-        <div class="container">
-            <div class="pricing">
-                <div class="pricing-header">
-                    Pelis<span class="main-color">VIP</span> Precios
-                </div>
-                <div class="pricing-list">
-                    <div class="row">
-                        <div class="col-4 col-md-12 col-sm-12">
-                            <div class="pricing-box">
-                                <div class="pricing-box-header">
-                                    <div class="pricing-name">
-                                        Básico
-                                    </div>
-                                    <div class="pricing-price">
-                                        Gratis
-                                    </div>
-                                </div>
-                                <div class="pricing-box-content">
-                                    <p>Anuncios</p>
-                                    <p>Doramas</p>
-                                    <p>Series</p>
-                                    <p>Películas</p>
-                                    <p>Canales de Adultos</p>
-                                    <p>Canales en vivo</p>
-                                    <p><del>Películas HD</del></p>
-                                    <p><del>Películas 4K</del></p> 
-                                </div>
-                                <div class="pricing-box-action">
-                                    <a href="#" class="btn btn-hover">
-                                        <span>Bienvenido</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4 col-md-12 col-sm-12">
-                            <div class="pricing-box hightlight">
-                                <div class="pricing-box-header">
-                                    <div class="pricing-name">
-                                        Premium
-                                    </div>
-                                    <div class="pricing-price">
-                                        $5.99 <span>/mes</span>
-                                    </div>
-                                </div>
-                                <div class="pricing-box-content">
-                                    
-                                    <p>Doramas</p>
-                                    <p>Series</p>
-                                    <p>Películas HD</p>
-                                    <p>Canales de Adultos</p>
-                                    <p>Canales en vivo</p>   
-                                    <p><del>Películas 4K</del></p> 
-                                    <p><del>Anuncios</del></p>   
-                                </div>
-                                <div class="pricing-box-action">
-                                    <a href="whatsapp://send?text=Hola quiero registrame en la versión sin anuncios&phone=+593962238558" class="btn btn-hover">
-                                        <span>Regístrate ahora</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4 col-md-12 col-sm-12">
-                            <div class="pricing-box">
-                                <div class="pricing-box-header">
-                                    <div class="pricing-name">
-                                        VIP
-                                    </div>
-                                    <div class="pricing-price">
-                                        $15.99 <span>/mes</span>
-                                    </div>
-                                </div>
-                                <div class="pricing-box-content">
-                                    <p>Doramas</p>
-                                    <p>Series</p>
-                                    <p>Películas 4K</p>
-                                    <p>Canales de Adultos</p>
-                                    <p>Canales en vivo</p>    
-                                    <p><del>Anuncios</del></p>
-                                </div>
-                                <div class="pricing-box-action">
-                                    <a href="whatsapp://send?text=Hola quiero registrame en la versión sin anuncios&phone=+593962238558" class="btn btn-hover">
-                                        <span>Regístrate ahora</span>
-                                    </a>
-                                </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold mb-1">Reinos de Hierro</h4>
+                            <div class="flex items-center text-gray-400 text-sm">
+                                <span>Histórica</span>
+                                <span class="mx-2">•</span>
+                                <span>1 Temporada</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- END PRICING SECTION -->
+    </section>
 
-    <!-- FOOTER SECTION -->
-    <footer class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-4 col-md-6 col-sm-12">
-                    <div class="content">
-                        <a href="#" class="logo">
-                            <i class='bx bx-movie-play bx-tada main-color'></i>Pelis<span class="main-color">VIP</span>
-                        </a>
-                        <p>
-                            Bienvenido a PelisVIP. Tu destino exclusivo para los estrenos más esperados del cine mundial. Sumérgete en historias fascinantes y vive la magia de la gran pantalla, directamente desde la comodidad de tu hogar. Disfruta de la mejor calidad y la más reciente selección, porque en PelisVIP, tu experiencia VIP es nuestra prioridad. © 2025 PelisVIP. Todos los derechos reservados.
-                        </p>
-                        <div class="social-list">
-                            <a href="go:tiktok" class="social-item">
-                                <img src="https://github.com/wgomezguerrero/imagenespelisvip/blob/main/tik-tok_pelisvip.png?raw=true" alt="tiktok" width="15" height="15">
-                            </a>
-                            <a href="go:youtube" class="social-item">
-                                <img src="https://github.com/wgomezguerrero/imagenespelisvip/blob/main/youtube%20-pelis.png?raw=true" alt="tiktok" width="15" height="15">
-                            </a>
-                           <!-- <a href="#" class="social-item">
-                                <i class="bx bxl-facebook"></i> 
-                            </a> -->
-                           <!-- <a href="#" class="social-item">
-                                <i class="bx bxl-twitter"></i> 
-                            </a> -->
-                           <!-- <a href="#" class="social-item">
-                                <i class="bx bxl-instagram"></i> 
-                            </a> -->
-                            
-                        </div>
+    <!-- Devices Section -->
+    <section id="dispositivos" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Disponible en tus dispositivos favoritos</h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Lleva PelisVIP contigo a donde vayas
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="device-card p-6 rounded-xl text-center">
+                    <div class="mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c5ea0a40-58c3-4937-ab77-c78c3c5743be.png" alt="Smartphone moderno mostrando la interfaz de PelisVIP con películas recomendadas" class="mx-auto">
                     </div>
+                    <h3 class="text-xl font-bold mb-2">Smartphones</h3>
+                    <p class="text-gray-400">
+                        Android e iOS compatibles con versiones recientes
+                    </p>
                 </div>
-                <div class="col-8 col-md-6 col-sm-12">
-                    <div class="row">
-                        <div class="col-3 col-md-6 col-sm-6">
-                            <div class="content">
-                                <p><b>Pelisvip</b></p>
-                                <ul class="footer-menu">
-                                    <li><a href="go:sono">Sobre Nosotros</a></li>
-                                    <li><a href="http://action_profile">Mi Perfil</a></li>
-                                    <li><a href="go:plypr">Planes y precios</a></li>
-                                    <li><a href="whatsapp://send?text=Hola quiero registrame en la versión sin anuncios&phone=+593962238558">Contactos</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-3 col-md-6 col-sm-6">
-                            <div class="content">
-                                <p><b>Navegar</b></p>
-                                <ul class="footer-menu">
-                                    <li><a href="go:sono">Sobre Nosotros</a></li>
-                                    <li><a href="http://action_profile">Mi Perfil</a></li>
-                                    <li><a href="go:plypr">Planes y precios</a></li>
-                                    <li><a href="whatsapp://send?text=Hola quiero registrame en la versión sin anuncios&phone=+593962238558">Contactos</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-3 col-md-6 col-sm-6">
-                            <div class="content">
-                                <p><b>Ayuda</b></p>
-                                <ul class="footer-menu">
-                                    <li><a href="go:sono">Sobre Nosotros</a></li>
-                                    <li><a href="http://action_profile">Mi Perfil</a></li>
-                                    <li><a href="go:plypr">Planes y precios</a></li>
-                                    <li><a href="whatsapp://send?text=Hola quiero registrame en la versión sin anuncios&phone=+593962238558">Contactos</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-3 col-md-6 col-sm-6">
-                            <div class="content">
-                                <p><b>Descargar APP</b></p>
-                                <ul class="footer-menu">
-                                    <li>
-                                        <a href="http://aftv.news/7645567">
-                                            <img src="https://www.aftvnews.com/wp-content/uploads/2020/06/logo-aftvnews-200x31-1.png" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img src="#" alt="">
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                
+                <div class="device-card p-6 rounded-xl text-center">
+                    <div class="mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/084e7bff-99d0-4a51-8923-c25cd9543f8d.png" alt="Tablet mostrando película en reproducción con controles de pantalla táctil" class="mx-auto">
                     </div>
+                    <h3 class="text-xl font-bold mb-2">Tablets</h3>
+                    <p class="text-gray-400">
+                        Optimizado para pantallas más grandes
+                    </p>
+                </div>
+                
+                <div class="device-card p-6 rounded-xl text-center">
+                    <div class="mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/63f59f8d-929f-4145-b70c-3161b7807af4.png" alt="Televisor inteligente con pantalla ultraHD mostrando cartelera de estrenos en PelisVIP" class="mx-auto">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Televisores</h3>
+                    <p class="text-gray-400">
+                        Compatible con Android TV, Fire TV y más
+                    </p>
+                </div>
+                
+                <div class="device-card p-6 rounded-xl text-center">
+                    <div class="mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/87f6f98d-076f-43ba-96c2-87525f96458b.png" alt="Laptop con pantalla de alta resolución mostrando múltiples perfiles de usuario" class="mx-auto">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Computadoras</h3>
+                    <p class="text-gray-400">
+                        Accede desde cualquier navegador moderno
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 to-indigo-700">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">¿Qué esperas para comenzar?</h2>
+            <p class="text-xl text-blue-100 mb-8">
+                Descarga PelisVIP ahora y disfruta de un mes gratis de nuestro servicio premium.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#" class="bg-white text-blue-600 py-3 px-8 rounded-full font-bold hover:bg-gray-100 transition inline-flex items-center justify-center">
+                    <i class="fab fa-google-play mr-2"></i> Play Store
+                </a>
+                <a href="#" class="bg-white text-blue-600 py-3 px-8 rounded-full font-bold hover:bg-gray-100 transition inline-flex items-center justify-center">
+                    <i class="fab fa-apple mr-2"></i> App Store
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900/80 py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">
+                        <span class="text-blue-500">Pelis</span>VIP
+                    </h3>
+                    <p class="text-gray-400">
+                        La mejor plataforma de streaming con contenido exclusivo para todos los dispositivos.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Contenido</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Películas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Series</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Documentales</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Exclusivos</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Soporte</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Centro de ayuda</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contáctanos</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Preguntas frecuentes</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Guías de instalación</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Términos de uso</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Política de privacidad</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Aviso legal</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Derechos de autor</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">
+                    © 2023 PelisVIP. Todos los derechos reservados.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition text-xl">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition text-xl">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition text-xl">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition text-xl">
+                        <i class="fab fa-youtube"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </footer>
-    <!-- END FOOTER SECTION -->
 
-    <!-- COPYRIGHT SECTION -->
-    <div class="copyright">
-        Derechos de autor 2025  
-    </div>
-    <!-- END COPYRIGHT SECTION -->
-
-    <!-- SCRIPT -->
-    <!-- JQUERY -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <!-- OWL CAROUSEL -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous"></script>
-    <!-- APP SCRIPT -->
-    <script src="app.js"></script>
-
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animation on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.content-card, .feature-card, .device-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(element);
+            });
+        };
+        
+        // Initialize animations when DOM is loaded
+        document.addEventListener('DOMContentLoaded', animateOnScroll);
+    </script>
 </body>
-
-<script>
-
-$(document).ready(() => {
-    $('#hamburger-menu').click(() => {
-        $('#hamburger-menu').toggleClass('active')
-        $('#nav-menu').toggleClass('active')
-    })
-
-    // setting owl carousel
-
-    let navText = ["<i class='bx bx-chevron-left'></i>", "<i class='bx bx-chevron-right'></i>"]
-
-    $('#hero-carousel').owlCarousel({
-        items: 1,
-        dots: false,
-        loop: true,
-        nav:true,
-        navText: navText,
-        autoplay: true,
-        autoplayHoverPause: true
-    })
-
-    $('#top-movies-slide').owlCarousel({
-        items: 2,
-        dots: false,
-        loop: true,
-        autoplay: true,
-        autoplayHoverPause: true,
-        responsive: {
-            500: {
-                items: 3
-            },
-            1280: {
-                items: 4
-            },
-            1600: {
-                items: 6
-            }
-        }
-    })
-
-    $('.movies-slide').owlCarousel({
-        items: 2,
-        dots: false,
-        nav:true,
-        navText: navText,
-        margin: 15,
-        responsive: {
-            500: {
-                items: 2
-            },
-            1280: {
-                items: 4
-            },
-            1600: {
-                items: 6
-            }
-        }
-    })
-})
-
-</script>
-
 </html>
+
+
