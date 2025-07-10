@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PelisVIP - La mejor experiencia en streaming</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f0f16;
+            color: #ffffff;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+        
+        .content-card {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .content-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #2563eb 0%, #1e40af 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
+        }
+        
+        .device-card {
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .device-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(37, 99, 235, 0.2);
+            border-radius: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="bg-gray-900/80 backdrop-blur-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-white">
+                        <span class="text-blue-500">Pelis</span>VIP
+                    </span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="text-gray-300 hover:text-white transition">Inicio</a>
+                    <a href="#caracteristicas" class="text-gray-300 hover:text-white transition">Características</a>
+                    <a href="#contenido" class="text-gray-300 hover:text-white transition">Contenido</a>
+                    <a href="#dispositivos" class="text-gray-300 hover:text-white transition">Dispositivos</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-white focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-gradient pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                    Disfruta de tus películas y series favoritas en 
+                    <span class="text-blue-400">cualquier dispositivo</span>
+                </h1>
+                <p class="text-xl text-gray-300 mb-8">
+                    PelisVIP ofrece la mejor experiencia de streaming con contenido exclusivo, calidad 4K y soporte multicontenido.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#" class="btn-primary py-3 px-8 rounded-full font-semibold text-white inline-flex items-center justify-center">
+                        <i class="fas fa-download mr-2"></i> Descargar App
+                    </a>
+                    <a href="#" class="bg-transparent border border-gray-600 py-3 px-8 rounded-full font-semibold hover:bg-gray-800 transition inline-flex items-center justify-center">
+                        <i class="fas fa-play mr-2"></i> Ver Demo
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1b8b1b65-9e7c-42d1-9fc1-e88427301947.png" alt="Aplicación PelisVIP mostrada en múltiples dispositivos: smartphone, tablet y televisión inteligente" class="rounded-xl shadow-2xl">
+                    <div class="absolute -bottom-6 -right-6 bg-blue-600 w-16 h-16 rounded-full flex items-center justify-center">
+                        <i class="fas fa-play text-white text-xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="caracteristicas" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Características Exclusivas</h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Descubre todo lo que hace especial a PelisVIP
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="feature-card p-8 rounded-xl">
+                    <div class="feature-icon mb-6">
+                        <i class="fas fa-film text-blue-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Contenido Exclusivo</h3>
+                    <p class="text-gray-400">
+                        Acceso a películas y series que no encontrarás en otras plataformas de streaming.
+                    </p>
+                </div>
+                
+                <div class="feature-card p-8 rounded-xl">
+                    <div class="feature-icon mb-6">
+                        <i class="fas fa-tv text-blue-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Multiplataforma</h3>
+                    <p class="text-gray-400">
+                        Disfruta en tu móvil, tablet, computadora o directamente en tu televisor.
+                    </p>
+                </div>
+                
+                <div class="feature-card p-8 rounded-xl">
+                    <div class="feature-icon mb-6">
+                        <i class="fas fa-download text-blue-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Descargas Offline</h3>
+                    <p class="text-gray-400">
+                        Descarga tus películas y series favoritas para verlas sin conexión a internet.
+                    </p>
+                </div>
+                
+                <div class="feature-card p-8 rounded-xl">
+                    <div class="feature-icon mb-6">
+                        <i class="fas fa-closed-captioning text-blue-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Multi-idioma</h3>
+                    <p class="text-gray-400">
+                        Disponible en varios idiomas con subtítulos para una mejor experiencia.
+                    </p>
+                </div>
+                
+                <div class="feature-card p-8 rounded-xl">
+                    <div class="feature-icon mb-6">
+                        <i class="fas fa-users text-blue-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Perfiles Múltiples</h3>
+                    <p class="text-gray-400">
+                        Crea hasta 5 perfiles diferentes con sus propias recomendaciones y preferencias.
+                    </p>
+                </div>
+                
+                <div class="feature-card p-8 rounded-xl">
+                    <div class="feature-icon mb-6">
+                        <i class="fas fa-baby text-blue-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Modo Kids</h3>
+                    <p class="text-gray-400">
+                        Contenido especial para niños con controles parentales avanzados.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section id="contenido" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Explora Nuestro Contenido</h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Miles de horas de entretenimiento para todos los gustos
+                </p>
+            </div>
+            
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold mb-6">Películas Destacadas</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                    <div class="content-card rounded-lg overflow-hidden">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fa3c6ec9-f57c-4e38-9488-c2134349d842.png" alt="Cartel de película de acción: héroe con traje futurista en medio de una explosión en la ciudad" class="w-full h-auto">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 flex items-end p-4 opacity-0 hover:opacity-100 transition">
+                                <button class="btn-primary py-1 px-3 rounded-full text-sm font-medium">
+                                    Reproducir
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold mb-1">Misión Extrema 5</h4>
+                            <div class="flex items-center text-gray-400 text-sm">
+                                <span>Acción</span>
+                                <span class="mx-2">•</span>
+                                <span>2023</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-card rounded-lg overflow-hidden">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b497c710-01e7-4a73-a8f8-ca0a26227a8c.png" alt="Cartel de terror: casa embrujada con silueta escalofriante en la ventana bajo luna llena" class="w-full h-auto">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 flex items-end p-4 opacity-0 hover:opacity-100 transition">
+                                <button class="btn-primary py-1 px-3 rounded-full text-sm font-medium">
+                                    Reproducir
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold mb-1">La Casa del Silencio</h4>
+                            <div class="flex items-center text-gray-400 text-sm">
+                                <span>Terror</span>
+                                <span class="mx-2">•</span>
+                                <span>2022</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-card rounded-lg overflow-hidden">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/21982221-838d-4244-a963-e44df29ed861.png" alt="Cartel de comedia romántica: pareja abrazándose bajo la lluvia en una escena cómica" class="w-full h-auto">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 flex items-end p-4 opacity-0 hover:opacity-100 transition">
+                                <button class="btn-primary py-1 px-3 rounded-full text-sm font-medium">
+                                    Reproducir
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold mb-1">Amor en Tiempos de Zoom</h4>
+                            <div class="flex items-center text-gray-400 text-sm">
+                                <span>Comedia</span>
+                                <span class="mx-2">•</span>
+                                <span>2021</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-card rounded-lg overflow-hidden">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e4aa9ffa-9f94-4f6d-9529-661f4b3c5fc4.png" alt="Cartel de ciencia ficción: astronautas en un planeta alienígena con cielo morado y tres soles" class="w-full h-auto">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 flex items-end p-4 opacity-0 hover:opacity-100 transition">
+                                <button class="btn-primary py-1 px-3 rounded-full text-sm font-medium">
+                                    Reproducir
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold mb-1">Odisea en Kepler-186f</h4>
+                            <div class="flex items-center text-gray-400 text-sm">
+                                <span>Ciencia Ficción</span>
+                                <span class="mx-2">•</span>
+                                <span>2023</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-card rounded-lg overflow-hidden">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/833dd405-daab-4737-be50-17b314e44269.png" alt="Cartel de documental: ballena jorobada bajo el agua con rayos de sol filtrándose en el océano" class="w-full h-auto">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 flex items-end p-4 opacity-0 hover:opacity-100 transition">
+                                <button class="btn-primary py-1 px-3 rounded-full text-sm font-medium">
+                                    Reproducir
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold mb-1">Planeta Azul</h4>
+                            <div class="flex items-center text-gray-400 text-sm">
+                                <span>Documental</span>
+                                <span class="mx-2">•</span>
+                                <span>2020</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12">
+                <h3 class="text-2xl font-semibold mb-6">Series Populares</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                    <div class="content-card rounded-lg overflow-hidden">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6310ff70-d31f-4d41-adff-9b6652721f98.png" alt="Cartel de serie policiaca: detective con gabardina sosteniendo un arma bajo la lluvia en la ciudad" class="w-full h-auto">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 flex items-end p-4 opacity-0 hover:opacity-100 transition">
+                                <button class="btn-primary py-1 px-3 rounded-full text-sm font-medium">
+                                    Reproducir
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold mb-1">Callejones Oscuros</h4>
+                            <div class="flex items-center text-gray-400 text-sm">
+                                <span>Policiaco</span>
+                                <span class="mx-2">•</span>
+                                <span>3 Temporadas</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-card rounded-lg overflow-hidden">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d8860531-f220-428d-9b19-3f77c9a11c0d.png" alt="Cartel de serie adolescente: grupo diverso de jóvenes riendo en un parque universitario" class="w-full h-auto">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 flex items-end p-4 opacity-0 hover:opacity-100 transition">
+                                <button class="btn-primary py-1 px-3 rounded-full text-sm font-medium">
+                                    Reproducir
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold mb-1">Años Dorados</h4>
+                            <div class="flex items-center text-gray-400 text-sm">
+                                <span>Drama</span>
+                                <span class="mx-2">•</span>
+                                <span>2 Temporadas</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-card rounded-lg overflow-hidden">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b6160a0e-d9d6-43db-be26-cd86a83b2ba4.png" alt="Cartel de serie de fantasía: mago con capa levantando un hechizo con manos brillantes en bosque encantado" class="w-full h-auto">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 flex items-end p-4 opacity-0 hover:opacity-100 transition">
+                                <button class="btn-primary py-1 px-3 rounded-full text-sm font-medium">
+                                    Reproducir
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold mb-1">El Último Hechicero</h4>
+                            <div class="flex items-center text-gray-400 text-sm">
+                                <span>Fantasía</span>
+                                <span class="mx-2">•</span>
+                                <span>4 Temporadas</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-card rounded-lg overflow-hidden">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0324a85d-2af7-4e07-a867-f62b385a75c7.png" alt="Cartel de serie de comedia: familia dispar sentada en sofá en medio de un caos doméstico hilarante" class="w-full h-auto">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 flex items-end p-4 opacity-0 hover:opacity-100 transition">
+                                <button class="btn-primary py-1 px-3 rounded-full text-sm font-medium">
+                                    Reproducir
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold mb-1">Mi Loca Casa</h4>
+                            <div class="flex items-center text-gray-400 text-sm">
+                                <span>Comedia</span>
+                                <span class="mx-2">•</span>
+                                <span>5 Temporadas</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-card rounded-lg overflow-hidden">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/cd66d4f6-79f7-4ac5-ad08-b13d4cb7e64c.png" alt="Cartel de serie histórica: noble medieval en castillo iluminado con velas mirando documentos antiguos" class="w-full h-auto">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 flex items-end p-4 opacity-0 hover:opacity-100 transition">
+                                <button class="btn-primary py-1 px-3 rounded-full text-sm font-medium">
+                                    Reproducir
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold mb-1">Reinos de Hierro</h4>
+                            <div class="flex items-center text-gray-400 text-sm">
+                                <span>Histórica</span>
+                                <span class="mx-2">•</span>
+                                <span>1 Temporada</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Devices Section -->
+    <section id="dispositivos" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Disponible en tus dispositivos favoritos</h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Lleva PelisVIP contigo a donde vayas
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="device-card p-6 rounded-xl text-center">
+                    <div class="mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c5ea0a40-58c3-4937-ab77-c78c3c5743be.png" alt="Smartphone moderno mostrando la interfaz de PelisVIP con películas recomendadas" class="mx-auto">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Smartphones</h3>
+                    <p class="text-gray-400">
+                        Android e iOS compatibles con versiones recientes
+                    </p>
+                </div>
+                
+                <div class="device-card p-6 rounded-xl text-center">
+                    <div class="mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/084e7bff-99d0-4a51-8923-c25cd9543f8d.png" alt="Tablet mostrando película en reproducción con controles de pantalla táctil" class="mx-auto">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Tablets</h3>
+                    <p class="text-gray-400">
+                        Optimizado para pantallas más grandes
+                    </p>
+                </div>
+                
+                <div class="device-card p-6 rounded-xl text-center">
+                    <div class="mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/63f59f8d-929f-4145-b70c-3161b7807af4.png" alt="Televisor inteligente con pantalla ultraHD mostrando cartelera de estrenos en PelisVIP" class="mx-auto">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Televisores</h3>
+                    <p class="text-gray-400">
+                        Compatible con Android TV, Fire TV y más
+                    </p>
+                </div>
+                
+                <div class="device-card p-6 rounded-xl text-center">
+                    <div class="mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/87f6f98d-076f-43ba-96c2-87525f96458b.png" alt="Laptop con pantalla de alta resolución mostrando múltiples perfiles de usuario" class="mx-auto">
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Computadoras</h3>
+                    <p class="text-gray-400">
+                        Accede desde cualquier navegador moderno
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 to-indigo-700">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">¿Qué esperas para comenzar?</h2>
+            <p class="text-xl text-blue-100 mb-8">
+                Descarga PelisVIP ahora y disfruta de un mes gratis de nuestro servicio premium.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#" class="bg-white text-blue-600 py-3 px-8 rounded-full font-bold hover:bg-gray-100 transition inline-flex items-center justify-center">
+                    <i class="fab fa-google-play mr-2"></i> Play Store
+                </a>
+                <a href="#" class="bg-white text-blue-600 py-3 px-8 rounded-full font-bold hover:bg-gray-100 transition inline-flex items-center justify-center">
+                    <i class="fab fa-apple mr-2"></i> App Store
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900/80 py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">
+                        <span class="text-blue-500">Pelis</span>VIP
+                    </h3>
+                    <p class="text-gray-400">
+                        La mejor plataforma de streaming con contenido exclusivo para todos los dispositivos.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Contenido</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Películas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Series</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Documentales</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Exclusivos</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Soporte</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Centro de ayuda</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contáctanos</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Preguntas frecuentes</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Guías de instalación</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Términos de uso</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Política de privacidad</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Aviso legal</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Derechos de autor</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">
+                    © 2023 PelisVIP. Todos los derechos reservados.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition text-xl">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition text-xl">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition text-xl">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition text-xl">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animation on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.content-card, .feature-card, .device-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(element);
+            });
+        };
+        
+        // Initialize animations when DOM is loaded
+        document.addEventListener('DOMContentLoaded', animateOnScroll);
+    </script>
+</body>
+</html>
+
